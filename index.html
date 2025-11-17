@@ -54,7 +54,35 @@ const TOUT_PANEL = `
   <b>Netzbetreiber</b> simuliert. Die Tarife werden <b>einmal täglich</b> als
   <b>Day‑Ahead</b> mit <b>15‑Minuten</b> Auflösung gesendet. Der Use‑Case ist
   in <b>DIN VDE AR‑2829</b> beschrieben.</p>
-
+  Hier ein Beispiel:
+<pre><code>
+{
+  "type": "de.keo-connectivity.clseedi.incentivetable",
+  "source": "backend",
+  "id": "unique-table-id",
+  "specversion": "1.0",
+  "data": {
+    "protocol": "1.1.0",
+    "slots": [
+      {
+        "startTime": "2025-11-17T00:00:00Z",
+        "endTime": "2025-11-17T01:00:00Z",
+        "priceOfEnergy": 0.18,
+        "transmissionFee": 0.07,
+        "type": "consumption"
+      },
+      {
+        "startTime": "2025-11-17T01:00:00Z",
+        "endTime": "2025-11-17T02:00:00Z",
+        "priceOfEnergy": 0.22,
+        "transmissionFee": 0.09,
+        "type": "consumption"
+      }
+      // weitere Zeit-Slots ...
+    ]
+  }
+}
+</pre></code>
   <div class="callout">
     <b>Labor-Transport:</b> PoE &amp; TF per <b>MQTT</b> → EEBUS‑Treiber (Merge zu <code>all_in</code>) → HEMS.<br/>
     Topics: <code>cls/tout/poe/&lt;role&gt;/schedule</code>,
